@@ -1,0 +1,64 @@
+﻿<Window x:Class="CricketTeamManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cricket Team Manager" Height="550" Width="400" 
+        Background="#f3f4f6" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="Cricket Team Manager" 
+                   FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" 
+                   Margin="0,0,0,20" Foreground="#2c3e50"/>
+
+        <!-- Input Section -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <TextBox x:Name="PlayerNameTextBox" Width="200" Height="30" FontSize="14" Padding="5" 
+                     Margin="0,0,10,0" GotFocus="PlayerNameTextBox_GotFocus" LostFocus="PlayerNameTextBox_LostFocus"
+                     Text="Enter player name" Foreground="Gray" />
+            <Button Content="Clear" Width="80" Height="30" 
+                    Background="#3498db" Foreground="White" 
+                    Click="ClearButton_Click" />
+        </StackPanel>
+
+        <!-- Action Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <Button Content="Add Player" Width="100" Height="40" Margin="5" 
+                    Background="#2ecc71" Foreground="White" FontWeight="Bold" 
+                    Click="AddPlayerButton_Click" />
+            <Button Content="Remove Player" Width="120" Height="40" Margin="5" 
+        Background="#e74c3c" Foreground="White" FontWeight="Bold" 
+        Click="RemovePlayerButton_Click" />
+
+        </StackPanel>
+
+        <!-- Search Section -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <TextBox x:Name="SearchPlayerTextBox" Width="200" Height="30" FontSize="14" Padding="5" 
+                     Margin="0,0,10,0" GotFocus="SearchPlayerTextBox_GotFocus" LostFocus="SearchPlayerTextBox_LostFocus"
+                     Text="Search player name" Foreground="Gray" />
+            <Button Content="Search" Width="80" Height="30" 
+                    Background="#f39c12" Foreground="White" 
+                    Click="SearchPlayerButton_Click" />
+        </StackPanel>
+
+        <!-- Player List -->
+        <ListBox x:Name="PlayerListBox" Grid.Row="4" 
+                 Background="#ecf0f1" Foreground="#2c3e50" FontSize="16" Padding="10"
+                 BorderThickness="1" BorderBrush="#bdc3c7" ItemsSource="{Binding Players}" />
+
+        <!-- Player Count -->
+        <TextBlock Grid.Row="5" Text="{Binding ElementName=PlayerListBox, Path=Items.Count, StringFormat='Total Players: {0}'}" 
+                   HorizontalAlignment="Center" FontSize="16" Foreground="#34495e" Margin="10" />
+    </Grid>
+</Window>
